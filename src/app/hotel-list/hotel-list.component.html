@@ -1,0 +1,55 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th></th>
+                <th>Hotel Name</th>
+                <th>Stars</th>
+                <th>Booking Date</th>
+                <th>Details</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hotel of hotels; let i = index">
+                <td><img [src]='hotel.imgLink' alt="hotel sign" style="width: 60px;"></td>
+                <td>{{hotel.name}}</td>
+                <td>{{hotel.stars}}</td>
+                <td>{{hotel.registerDay}}</td>
+                <td>{{hotel.details}}</td>
+                <td>
+                    <button type="button" class="btn btn-success" (click)="selectHotel(hotel)"  data-bs-toggle="modal" data-bs-target="#hotelInfo">View More</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+  <!-- Modal -->
+  <div class="modal fade" id="hotelInfo" tabindex="-1" aria-labelledby="hotelInfoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="hotelInfoLabel">{{selectedHotel.name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="com-sm-4" style="align-items: center;">
+              <img src="" alt="" style="width: 100%;">
+            </div>
+            <div class="com-sm-8 overflow-auto">
+              <ul class="list-group list-group-item">
+                Stars: {{selectedHotel.stars}}
+              </ul>
+              <ul class="list-group list-group-item">
+                Booking Date: {{selectedHotel.registerDay}}
+              </ul>
+              <ul class="list-group list-group-item text-break">
+                Details: {{selectedHotel.details}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

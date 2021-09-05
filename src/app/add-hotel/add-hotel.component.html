@@ -1,0 +1,36 @@
+<div class="container mx-auto mt-2" style="width: 20vw;">
+    <form [formGroup]="addHot" (ngSubmit)="onSubmit()">
+    
+        <!--img-->
+        <div class="mb-3">
+          <label for="hotelImg" class="form-label">Hotel Image</label>
+          <input type="text" class="form-control" id="hotelImg" formControlName="imgLink" [ngClass]="{'is-valid': f.imgLink.valid, 'is-invalid': f.imgLink.errors && (f.imgLink.touched || f.imgLink.dirty)}">
+        </div>
+
+        <!--Name-->
+        <div class="mb-3">
+            <label for="hotelName" class="form-label">Hotel Name</label>
+            <input type="text" class="form-control" id="hotelName" formControlName="name" [ngClass]="{'is-valid': f.name.valid, 'is-invalid': f.name.errors && (f.name.touched || f.name.dirty)}">
+          </div>
+    
+        <!--Stars-->
+        <div class="mb-3">
+            <label for="hotelStars" class="form-label">Stars</label>
+            <input type="number" class="form-control" id="hotelStars" formControlName="stars" [ngClass]="{'is-valid': f.stars.valid, 'is-invalid': f.stars.errors && (f.stars.touched || f.stars.dirty)}">
+          </div>
+    
+          <!--registration day-->
+        <div class="mb-3">
+            <label for="registerDay" class="form-label">Registration date</label>
+            <input type="date" class="form-control" id="registerDay" formControlName="registerDay" [ngClass]="{'is-valid': f.registerDay.valid, 'is-invalid': f.registerDay.errors && (f.registerDay.touched || f.registerDay.dirty)}" >
+          </div>
+    
+        <!--description-->
+        <div class="mb-3">
+            <label for="hotelDetails" class="form-label">Details</label>
+            <textarea class="form-control" id="hotelDetails" rows="3" formControlName="details" [ngClass]="{'is-valid': f.details.valid, 'is-invalid': f.details.errors && (f.details.touched || f.details.dirty)}" ></textarea>
+          </div>
+    
+          <button type="submit" class="btn btn-success" [disabled]="!addHot.valid">Add Hotel</button>
+    </form>
+</div>
