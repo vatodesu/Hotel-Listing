@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content style="width: 50vw; height: 50vh;">
+    <div class="row">
+        <div class="col-sm-6">
+            <img [src]="data.imgLink"
+            alt='' style="width:80%;">
+        </div>
+        <div class="col-sm-6 overflow-auto">
+            <mat-list role="list">
+                <mat-list-item role="listitem"><mat-icon> business</mat-icon>Name: {{data.name}}</mat-list-item>
+                <mat-list-item role="listitem"><mat-icon>stars</mat-icon>stars: {{data.stars}}</mat-list-item>
+                <mat-list-item role="listitem"><mat-icon>today</mat-icon>Registration Day: {{data.registerDay}}</mat-list-item>
+                <mat-list-item role="listitem" class="text-break"><mat-icon>notes</mat-icon>Details: {{data.details}}</mat-list-item>
+            </mat-list>
+        
+        </div>
+    </div>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+
 
 @Component({
   selector: 'header',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public auth: AngularFireAuth,
+    
+  ) { }
 
   ngOnInit(): void {
   }
 
+  logOut(): void {
+    this.auth.signOut().then(() => {
+      window.location.reload();
+    });
+  }
 }

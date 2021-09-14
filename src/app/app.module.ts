@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +12,14 @@ import { AddHotelComponent } from './add-hotel/add-hotel.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialImportsModule } from './shared/angular-material-imports.module';
+import { environment} from 'src/environments/environment';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireModule } from '@angular/fire/compat';
+
+
 
 @NgModule({
   declarations: [
@@ -21,12 +30,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddHotelComponent,
     HotelListComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+    HotelDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    AngularMaterialImportsModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

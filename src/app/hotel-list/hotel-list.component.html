@@ -1,55 +1,50 @@
-<div class="container">
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th></th>
-                <th>Hotel Name</th>
-                <th>Stars</th>
-                <th>Booking Date</th>
-                <th>Details</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let hotel of hotels; let i = index">
-                <td><img [src]='hotel.imgLink' alt="hotel sign" style="width: 60px;"></td>
-                <td>{{hotel.name}}</td>
-                <td>{{hotel.stars}}</td>
-                <td>{{hotel.registerDay}}</td>
-                <td>{{hotel.details}}</td>
-                <td>
-                    <button type="button" class="btn btn-success" (click)="selectHotel(hotel)"  data-bs-toggle="modal" data-bs-target="#hotelInfo">View More</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-  <!-- Modal -->
-  <div class="modal fade" id="hotelInfo" tabindex="-1" aria-labelledby="hotelInfoLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="hotelInfoLabel">{{selectedHotel.name}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="com-sm-4" style="align-items: center;">
-              <img src="" alt="" style="width: 100%;">
-            </div>
-            <div class="com-sm-8 overflow-auto">
-              <ul class="list-group list-group-item">
-                Stars: {{selectedHotel.stars}}
-              </ul>
-              <ul class="list-group list-group-item">
-                Booking Date: {{selectedHotel.registerDay}}
-              </ul>
-              <ul class="list-group list-group-item text-break">
-                Details: {{selectedHotel.details}}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+<table mat-table [dataSource]="hotels" class="mat-elevation-z8 movie-table">
+  <!-- Poster Column -->
+  <ng-container matColumnDef="movie-poster">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let movie"><img [src]="movie.imgLink" alt="poster" style="width: 70px;"></td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="movie-name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let hotel">{{hotel.name}}</td>
+  </ng-container>
+
+  <!-- Year Column -->
+  <ng-container matColumnDef="movie-year">
+    <th mat-header-cell *matHeaderCellDef>Registration Day</th>
+    <td mat-cell *matCellDef="let hotel">{{hotel.registerDay}}</td>
+  </ng-container>
+
+    <!-- IMDB Column -->
+    <ng-container matColumnDef="movie-imdb">
+      <th mat-header-cell *matHeaderCellDef>Stars</th>
+      <td mat-cell *matCellDef="let hotel"><ngb-rating [(rate)]="hotel.stars" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+      </td>
+    </ng-container>
+    
+    <!-- More Info Column -->
+    <ng-container matColumnDef="hotel-details">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let hotel">
+        <button mat-mini-fab color="warn" (click)="selectHotel(hotel); openDialog()" data-toggle="modal"
+      data-target="#hotelDetails">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+    </td>
+    </ng-container>
+    
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<!--გულების რეითინგის თემფლეითი-->
+<ng-template #t let-fill="fill">
+  <span class="star" [class.full]="fill === 100">
+    <span class="half" [style.width.%]="fill">&star;</span>&star;
+  </span>
+</ng-template>

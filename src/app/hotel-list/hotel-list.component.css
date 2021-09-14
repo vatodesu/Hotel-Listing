@@ -1,0 +1,29 @@
+.movie-table {
+  width: 70%;
+  font-size: 1rem;
+  margin: auto;
+}
+
+.mat-column-hotel-poster {
+  width: 32px;
+  padding-right: 64px;
+  padding-left: 24px;
+}
+.mat-column-hotel-details {
+  padding-right: 0 !important;
+}
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #d3d3d3;
+}
+.full {
+  color: red;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: red;
+}

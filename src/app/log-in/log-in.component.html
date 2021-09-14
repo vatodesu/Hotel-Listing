@@ -1,1 +1,27 @@
-<p>log-in works!</p>
+<div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+    
+    <div class="form-container">
+        <h1 class="text-center">Log In</h1>
+         <div class="example-container">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Enter your email</mat-label>
+          <input type="email" matInput placeholder="pat@example.com" [(ngModel)]="email"  required>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        </div>
+        <div class="btn-container d-flex justify-content-center align-items-center">
+            <button mat-raised-button color="primary" class="mr-5" (click)="signIn()" >Log In</button> 
+        <button mat-raised-button color="accent" routerLink="/register">Sign Up</button>
+    </div>
+        
+    </div>
+</div>

@@ -22,9 +22,13 @@ export class AddHotelComponent implements OnInit {
 
   ngOnInit(): void {
     this.addHot = this.fb.group({
-      imgLink: ['../../assets/download (1).png', Validators.required],
+      imgLink: ['', Validators.required],
       name: ['', Validators.required],
-      stars: ['', Validators.required],
+      stars: ['',[
+       Validators.required,
+       Validators.min(0),
+       Validators.max(5)]
+      ],
       registerDay: ['', Validators.required],
       details: ['', Validators.required],
     })
